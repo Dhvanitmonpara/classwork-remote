@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Random password generator</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="pass-div">
+        <div id="pass-gen-con">
+          <div id="pass-gen-subcon">
+            <p id="pass-gen">Password Generator</p>
+            <img id="copy-img" height="25px" src="img/copy.png" alt="COPY" />
+          </div>
+        </div>
+        <form action="" id="form">
+          <div class="form-sec">
+            <label class="input-label" for="length-pass">Length of a password</label>
+            <input
+              class="input-btn"
+              type="text"
+              name="custom-password-selector"
+              id="length-pass"
+              value=""
+              placeholder="Enter a value"
+            />
+          </div>
+          <div class="form-sec">
+            <label class="input-label" for="lowercase-pass">Lower-case</label>
+            <input
+              class="input-btn"
+              type="checkbox"
+              name="custom-password-selector"
+              id="lowercase-pass"
+              value="lowercase-pass"
+            />
+          </div>
+          <div class="form-sec">
+            <label class="input-label" for="uppercase-pass">Upper-case</label>
+            <input
+              class="input-btn"
+              type="checkbox"
+              name="custom-password-selector"
+              id="uppercase-pass"
+              value="uppercase-pass"
+            />
+          </div>
+          <div class="form-sec">
+            <label class="input-label" for="number-pass">Number</label>
+            <input
+              class="input-btn"
+              type="checkbox"
+              name="custom-password-selector"
+              id="number-pass"
+              value="number-pass"
+            />
+          </div>
+
+          <div class="form-sec">
+            <label class="input-label" for="special-character-pass"
+              >Special characters</label
+            >
+            <input
+              class="input-btn"
+              type="checkbox"
+              name="custom-password-selector"
+              id="special-character-pass"
+              value="special-character-pass"
+            />
+          </div>
+          <div class="form-sec">
+            <label class="input-label" for="funny-pass">Funny</label>
+            <input
+              class="input-btn"
+              type="checkbox"
+              name="custom-password-selector"
+              id="funny-pass"
+              value="funny-pass"
+            />
+          </div>
+        </form>
+        <div id="gen-btn-con">
+          <button id="gen-btn">Generate</button>
+          <p id="copy-msg"></p>
+        </div>
+      </div>
+      <p id="alert-msg"></p>
+    </div>
+    <script src="classesScript.js"></script>
+  </body>
+</html>

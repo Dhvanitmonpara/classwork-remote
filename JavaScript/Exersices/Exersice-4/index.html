@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimal clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="navBar">
+      <ul>
+        <li class="active" id="goToClock">Clock</li>
+        <li class="" id="goToTimer">Timer</li>
+      </ul>
+    </div>
+    <div id="clockPage">
+      <p id="dateRightNow">08:22:00</p>
+      <p id="timeRightNow">Today is what?</p>
+    </div>
+    <div id="timerPage">
+      <div id="timerCon">
+        <div class="timerSubcon">
+          <div id="incrementMin" class="timeChangeBtn timeIncrement">+</div>
+          <div id="ongoingMin" class="ongoingTime">00</div>
+          <div id="decrementMin" class="timeChangeBtn timeDecrement">-</div>
+        </div>
+        <div id="colon">
+          <p>:</p>
+        </div>
+        <div class="timerSubcon">
+          <div id="incrementSec" class="timeChangeBtn timeIncrement">+</div>
+          <div id="ongoingSec" class="ongoingTime">00</div>
+          <div id="decrementSec" class="timeChangeBtn timeDecrement">-</div>
+        </div>
+      </div>
+      <div class="" id="startBtn">START</div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# Put linked files in this order
+
+animate css
+style.css (main file)
+
+JQuery
+lettering js
+textillate js
+gsap
+scrolltrigger
+script.js (main file)

@@ -1,0 +1,188 @@
+/* font family */
+
+@font-face {
+  font-family: gilroy;
+  src: url(fonts/gilroy/Gilroy-Medium.ttf);
+}
+
+*,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: gilroy;
+}
+
+#navBar {
+  height: 30vh;
+  width: 100vw;
+}
+
+#navBar ul {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70vw;
+  height: 30vh;
+}
+
+#navBar li {
+  list-style: none;
+  font-family: gilroy;
+  font-size: larger;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#goToClock,
+#goToTimer {
+  color: rgb(171, 171, 171);
+}
+
+#goToClock:hover,
+#goToTimer:hover {
+  color: white;
+  background-color: black;
+}
+
+#navBar li:active {
+  transform: scale(0.9);
+}
+
+#navBar li.active {
+  background-color: #fff;
+  color: black;
+}
+
+/* clock */
+
+#clockPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+  width: 100vw;
+}
+
+#dateRightNow {
+  font-size: 200px;
+}
+
+#timeRightNow {
+  margin-bottom: 20vh;
+
+  font-size: x-large;
+}
+
+/* timer */
+
+#timerPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#timerCon {
+  display: flex;
+  flex-direction: row;
+  height: 42vh;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+}
+
+#colon {
+  height: 40vh;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#colon > p {
+  font-size: 100px;
+}
+
+.timeChangeBtn {
+  height: 50px;
+  width: 300px;
+  font-size: 50px;
+  background-color: #3d3d3d;
+  color: rgb(213, 210, 210);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.timeChangeBtn:hover{
+  color: rgb(255, 255, 255);
+}
+
+.timeChangeBtn:active{
+  background-color: #3d3d3d;
+transform: scale(0.98);
+}
+
+.timeIncrement {
+  border-radius: 50px 50px 0px 0px;
+}
+
+.timeDecrement {
+  border-radius: 0px 0px 50px 50px;
+}
+
+.timerSubcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ongoingTime {
+  height: 200px;
+  width: 300px;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#startBtn {
+  font-size: larger;
+  margin-top: 90px;
+  color: #cbcbcb;
+  border-radius: 50px;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+#startBtn:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  transform: scale(1.1);
+}
+
+#startBtn:active {
+  transform: scale(1);
+}
+
+.activeTimer {
+  background-color: #3d3d3d;
+  color: white;
+}

@@ -1,0 +1,75 @@
+*,
+body {
+  margin: 0;
+  padding: 0;
+}
+.nav-bar,
+.sub-nav-bar {
+  height: 10vh;
+  width: 100vw;
+}
+
+.nav-bar {
+  background-color: lightcoral;
+}
+
+.sub-nav-bar {
+    background-color: lightgreen;
+}
+
+.right-div, .left-div {
+    height: 80vh;
+    width: 20vw;
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.right-div {
+    position: absolute;
+    right: 0;
+}
+
+.right-items, .left-items {
+    height: 100px;
+    width: 100px;
+    background-color: lightseagreen;
+    border-radius: 50%;
+    font-size: large;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-page {
+    height: 100vh;
+    width: 60vw;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 20vw;
+    top: 10vw;
+}
+
+.center-div-1, .center-div-2 {
+    height: 100%;
+    width: 100%;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+
+.yoyo-hora-bhai {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-top: 150px;
+}
