@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './index.css'
+import "./index.css";
+import AddTodo from "./Components/AddTodo";
+import Todos from "./Components/Todos";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
+      <div className="w-8/12 m-auto flex justify-center items-center flex-col">
+        <h1>Learn about redux toolkit</h1>
+        <AddTodo />
+        <Todos />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
