@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useTodo } from "../Context/todoContext";
 
 function TodoForm() {
-  const [todoTextComp, setTodoTextComp] = useState("");
+  const [todoTextCom, setTodoTextComp] = useState("");
 
   const { addTodo } = useTodo();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    addTodo({ todoText: todoTextComp, isCompleted: false });
+    addTodo({ todoText: todoTextCom, isCompleted: false });
     setTodoTextComp("");
   };
 
@@ -19,7 +19,7 @@ function TodoForm() {
         type="text"
         placeholder="Write Todo..."
         className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
-        value={todoTextComp}
+        value={todoTextCom}
         onChange={(e) => setTodoTextComp(e.target.value)}
       />
       <button
