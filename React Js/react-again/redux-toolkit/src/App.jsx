@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import "./App.css";
 import Todos from "./Components/Todos";
 import { useSelector } from "react-redux";
+import AddTodo from "./Components/AddTodo";
 
 function App() {
-  const todos = useSelector(state => state.todos)
+  const todos = useSelector((state) => state.todos);
   useEffect(() => {
     if (localStorage.getItem("TodoLists")) {
       localStorage.setItem("TodoLists", JSON.stringify(todos));
@@ -14,6 +15,7 @@ function App() {
   }, [todos]);
   return (
     <>
+      <AddTodo />
       <Todos />
     </>
   );

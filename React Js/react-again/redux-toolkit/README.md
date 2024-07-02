@@ -44,4 +44,5 @@ export main source export
 variable me values lelo ek baar aagaie uske baad pure JS concept hai 
 Note: Todo's Project basic nai hote xD 
 
-Video link is [here](https://www.youtube.com/watch?v=1i04-A7kfFI&ab_channel=ChaiaurCode).
+Video link is [here](https://www.youtube.com/watch?v=1i04-A7kfFI&ab_channel=ChaiaurCode) or [Piyush gard](https://youtu.be/fxT54eRIsc4?si=2vc5QtUq4qV-xJ-D).
+Refer to [Redux-toolkit](https://redux-toolkit.js.org/tutorials/quick-start).

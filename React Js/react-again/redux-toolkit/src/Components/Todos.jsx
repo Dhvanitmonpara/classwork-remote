@@ -1,24 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeTodo, updateTodo, addTodo } from "../features/todo/todoSlice";
-import AddTodo from "./AddTodo";
+import { removeTodo, setEditingValue, setEditingStatus } from "../features/todo/todoSlice";
 
 function Todos() {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
-  const [editingTodo, setEditingTodo] = useState(null);
 
   const handleEditClick = (todo) => {
-    setEditingTodo(todo);
-  };
-
-  const handleTodoUpdate = () => {
-    setEditingTodo(null);
+    dispatch(setEditingStatus(true))
+    dispatch(setEditingValue(todo));
   };
 
   return (
     <>
-      <AddTodo editTodo={editingTodo} onUpdate={handleTodoUpdate} />
       <div className="text-white text-4xl mt-24">Todos</div>
       <ul className="list-none">
         {todos.map((todo) => (

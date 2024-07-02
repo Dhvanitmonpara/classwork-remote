@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addTodo, updateTodo } from "../features/todo/todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addTodo,
+  updateTodo,
+  setEditingValue,
+  setEditingStatus,
+} from "../features/todo/todoSlice";
 
-function AddTodo({ editTodo, onUpdate }) {
-  const [input, setInput] = useState(editTodo ? editTodo.text : '');
+function AddTodo() {
+  const editTodoStatus = useSelector((state) => state.editingStatus);
+  const editTodo = useSelector((state) => state.editingValue);
+
+  const [input, setInput] = useState(editTodoStatus ? editTodo.text : "");
+
   const dispatch = useDispatch();
+  const onUpdate = () => {
+    dispatch(setEditingValue(null));
+    dispatch(setEditingStatus(false));
+  };
 
   useEffect(() => {
-    if (editTodo) {
+    if (editTodoStatus) {
       setInput(editTodo.text);
     } else {
-      setInput('');
+      setInput("");
     }
-  }, [editTodo]);
+  }, [editTodoStatus]);
 
   const addTodoHandler = (e) => {
     e.preventDefault();
-    if (editTodo) {
+    if (editTodoStatus) {
       dispatch(updateTodo({ id: editTodo.id, text: input }));
       onUpdate();
     } else {
@@ -38,7 +51,7 @@ function AddTodo({ editTodo, onUpdate }) {
         type="submit"
         className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       >
-        {editTodo ? 'Update Todo' : 'Add Todo'}
+        {editTodoStatus ? "Update Todo" : "Add Todo"}
       </button>
     </form>
   );
