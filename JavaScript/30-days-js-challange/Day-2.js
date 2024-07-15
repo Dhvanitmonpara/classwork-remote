@@ -68,7 +68,7 @@ console.log("g1 is less than g2: ", g1 < g2)
 console.log("g1 is greater than or equal to g2: ", g1 >= g2)
 console.log("g1 is less than or equal to g2: ", g1 <= g2)
 
-// script that uses ternary operator to check if a number is possitive or negative.
+// script that uses ternary operator to check if a number is positive or negative.
 
 let h1 = 10
 
