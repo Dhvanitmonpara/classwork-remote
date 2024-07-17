@@ -1,7 +1,9 @@
+// refer to the 'test' database on the localhost for practicing this.
+
 const asyncHandler = async () => {
 
     // How many users are active?
-    const activeUsers = await db.authors.aggregate([
+    const activeUsers = await db.users.aggregate([
         {
             $match: {
                 isActive: true
@@ -15,7 +17,7 @@ const asyncHandler = async () => {
     console.log("activeUsers: " + activeUsers)
 
     // what is average age of all users
-    const averageAge = await db.authors.aggregate([
+    const averageAge = await db.users.aggregate([
         {
             $group: {
                 _id: "$gender", // group by gender or use _id: null to not grouping them
@@ -29,7 +31,7 @@ const asyncHandler = async () => {
     console.log("averageAge: " + averageAge)
 
     // List the top 5 most common favorite fruits among the users
-    const topCommonFavFruits = db.authors.aggregate([
+    const topCommonFavFruits = db.users.aggregate([
         {
             // group combines hundreds and thousands of documents into one (just a single group)
             $group: {
@@ -54,7 +56,7 @@ const asyncHandler = async () => {
     console.log("topCommonFavFruits: " + topCommonFavFruits)
 
     // Find the number of males and females in the database
-    const numberOfMalesAndFemales = db.authors.aggregate([
+    const numberOfMalesAndFemales = db.users.aggregate([
         {
             $group: {
                 _id: "$gender",
@@ -68,7 +70,7 @@ const asyncHandler = async () => {
     console.log("numberOfMaleAndFemales: " + numberOfMalesAndFemales)
 
     // which country has the highest number of registered users?
-    const highestRegisteredUsersByCountry = db.authors.aggregate([
+    const highestRegisteredUsersByCountry = db.users.aggregate([
         {
             $group: {
                 _id: "$company.location.country",
@@ -89,7 +91,7 @@ const asyncHandler = async () => {
 
     console.log("highestRegisteredUsersByCountry: " + highestRegisteredUsersByCountry)
 
-    const eyeColors = db.authors.aggregate([
+    const eyeColors = db.users.aggregate([
         {
             $group: {
                 _id: "$eyeColor"
@@ -100,7 +102,7 @@ const asyncHandler = async () => {
     console.log("eyeColors: " + eyeColors)
 
     // Find the average number of tags by user
-    const averageNumberOfTagsByUser_method1 = db.authors.aggregate([
+    const averageNumberOfTagsByUser_method1 = db.users.aggregate([
         {
             $unwind: {
                 path: "$tags",
@@ -125,7 +127,7 @@ const asyncHandler = async () => {
     ])
 
     // another way
-    const averageNumberOfTagsByUser_method2 = db.authors.aggregate([
+    const averageNumberOfTagsByUser_method2 = db.users.aggregate([
         {
             $addFields: {
                 numberOfTags: {
@@ -148,7 +150,7 @@ const asyncHandler = async () => {
     console.log("averageNumberOfTagsByUser_method1: " + averageNumberOfTagsByUser_method1)
     console.log("averageNumberOfTagsByUser_method2: " + averageNumberOfTagsByUser_method2)
 
-    const usersWithEnimTag = db.authors.aggregate([
+    const usersWithEnimTag = db.users.aggregate([
         {
             $match: {
                 tags: "enim"
@@ -162,7 +164,7 @@ const asyncHandler = async () => {
     console.log("usersWithEnimTag: " + usersWithEnimTag)
 
     // what are the names and age of users who are inactive and have 'velit' as a tag.
-    const nameAndAgeOfUsers = db.authors.aggregate([
+    const nameAndAgeOfUsers = db.users.aggregate([
         {
             $match: {
                 isActive: false,
@@ -180,18 +182,101 @@ const asyncHandler = async () => {
     console.log("nameAndAgeOfUsers: " + nameAndAgeOfUsers)
 
     // How many users have a phone number starting with "+1 (940)"?
-    const userWithSpecialNumber = db.authors.aggregate([
+    const userWithSpecialNumber = db.users.aggregate([
         {
-          $match: {
-            "company.phone": /^\+1 \(940\)/
-          }
+            $match: {
+                "company.phone": /^\+1 \(940\)/
+            }
         },
         {
-          $count: 'userWithSpecialNumber'
+            $count: 'userWithSpecialNumber'
         }
-      ])
+    ])
 
-      console.log("userWithSpecialNumber: " + userWithSpecialNumber)
+    console.log("userWithSpecialNumber: " + userWithSpecialNumber)
+
+    // who has registered the most recently?
+    const recentlyRegisteredUsers = db.users.aggregate([
+        {
+            $sort: {
+                registered: -1
+            }
+        },
+        {
+            $limit: 5 // recently registered 5 users
+        },
+        {
+            $project: {
+                name: 1,
+                registered: 1,
+                favoriteFruit: 1
+            }
+        }
+    ])
+
+    console.log("recentlyRegisteredUsers: " + recentlyRegisteredUsers)
+
+    // categorize users by their fav fruit
+    const namesOfUsersByTheirFavFruit = db.users.aggregate([
+        {
+            $group: {
+                _id: "$favoriteFruit",
+                users: {
+                    $push: "$name"
+                }
+            }
+        },
+        {
+            $sort: {
+                _id: 1
+            }
+        }
+    ])
+
+    console.log("namesOfUsersByTheirFavFruit: " + namesOfUsersByTheirFavFruit)
+
+    // how many users have 'ad' as the second tag in their tags?
+    const usersWithTheAdTag = db.users.aggregate([
+        {
+            $match: {
+                "tags.1": "ad" // tags.1 defines the index of the array since the question asked for that
+            }
+        }
+    ])
+
+    console.log("usersWithTheAdTag: " + usersWithTheAdTag)
+
+    // Find users who have both 'enim' and 'id' tags
+    const usersWithEnimAndIdTags = db.users.aggregate([
+        {
+            $match: {
+                tags: {
+                    $all: ["enim", "ad"] // if you want both
+                }
+            }
+        }
+    ])
+
+    console.log("usersWithEnimAndIdTags: " + usersWithEnimAndIdTags)
+
+    // List all companies located in USA with their corresponding user count
+    const companiesWithCorrespondingUserCount = db.users.aggregate([
+        {
+            $match: {
+                "company.location.country": "USA"
+            }
+        },
+        {
+            $group: {
+                _id: "$company.title",
+                userCount: {
+                    $sum: 1
+                }
+            }
+        }
+    ])
+
+    console.log("companiesWithCorrespondingUserCount: " + companiesWithCorrespondingUserCount)
 
 }
 
