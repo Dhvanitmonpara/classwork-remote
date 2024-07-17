@@ -31,7 +31,7 @@ const asyncHandler = async () => {
     console.log("averageAge: " + averageAge)
 
     // List the top 5 most common favorite fruits among the users
-    const topCommonFavFruits = db.users.aggregate([
+    const topCommonFavFruits = await db.users.aggregate([
         {
             // group combines hundreds and thousands of documents into one (just a single group)
             $group: {
@@ -56,7 +56,7 @@ const asyncHandler = async () => {
     console.log("topCommonFavFruits: " + topCommonFavFruits)
 
     // Find the number of males and females in the database
-    const numberOfMalesAndFemales = db.users.aggregate([
+    const numberOfMalesAndFemales = await db.users.aggregate([
         {
             $group: {
                 _id: "$gender",
@@ -70,7 +70,7 @@ const asyncHandler = async () => {
     console.log("numberOfMaleAndFemales: " + numberOfMalesAndFemales)
 
     // which country has the highest number of registered users?
-    const highestRegisteredUsersByCountry = db.users.aggregate([
+    const highestRegisteredUsersByCountry = await db.users.aggregate([
         {
             $group: {
                 _id: "$company.location.country",
@@ -91,7 +91,7 @@ const asyncHandler = async () => {
 
     console.log("highestRegisteredUsersByCountry: " + highestRegisteredUsersByCountry)
 
-    const eyeColors = db.users.aggregate([
+    const eyeColors = await db.users.aggregate([
         {
             $group: {
                 _id: "$eyeColor"
@@ -102,7 +102,7 @@ const asyncHandler = async () => {
     console.log("eyeColors: " + eyeColors)
 
     // Find the average number of tags by user
-    const averageNumberOfTagsByUser_method1 = db.users.aggregate([
+    const averageNumberOfTagsByUser_method1 = await db.users.aggregate([
         {
             $unwind: {
                 path: "$tags",
@@ -127,7 +127,7 @@ const asyncHandler = async () => {
     ])
 
     // another way
-    const averageNumberOfTagsByUser_method2 = db.users.aggregate([
+    const averageNumberOfTagsByUser_method2 = await db.users.aggregate([
         {
             $addFields: {
                 numberOfTags: {
@@ -150,7 +150,7 @@ const asyncHandler = async () => {
     console.log("averageNumberOfTagsByUser_method1: " + averageNumberOfTagsByUser_method1)
     console.log("averageNumberOfTagsByUser_method2: " + averageNumberOfTagsByUser_method2)
 
-    const usersWithEnimTag = db.users.aggregate([
+    const usersWithEnimTag = await db.users.aggregate([
         {
             $match: {
                 tags: "enim"
@@ -164,7 +164,7 @@ const asyncHandler = async () => {
     console.log("usersWithEnimTag: " + usersWithEnimTag)
 
     // what are the names and age of users who are inactive and have 'velit' as a tag.
-    const nameAndAgeOfUsers = db.users.aggregate([
+    const nameAndAgeOfUsers = await db.users.aggregate([
         {
             $match: {
                 isActive: false,
@@ -182,7 +182,7 @@ const asyncHandler = async () => {
     console.log("nameAndAgeOfUsers: " + nameAndAgeOfUsers)
 
     // How many users have a phone number starting with "+1 (940)"?
-    const userWithSpecialNumber = db.users.aggregate([
+    const userWithSpecialNumber = await db.users.aggregate([
         {
             $match: {
                 "company.phone": /^\+1 \(940\)/
@@ -196,7 +196,7 @@ const asyncHandler = async () => {
     console.log("userWithSpecialNumber: " + userWithSpecialNumber)
 
     // who has registered the most recently?
-    const recentlyRegisteredUsers = db.users.aggregate([
+    const recentlyRegisteredUsers = await db.users.aggregate([
         {
             $sort: {
                 registered: -1
@@ -217,7 +217,7 @@ const asyncHandler = async () => {
     console.log("recentlyRegisteredUsers: " + recentlyRegisteredUsers)
 
     // categorize users by their fav fruit
-    const namesOfUsersByTheirFavFruit = db.users.aggregate([
+    const namesOfUsersByTheirFavFruit = await db.users.aggregate([
         {
             $group: {
                 _id: "$favoriteFruit",
@@ -236,7 +236,7 @@ const asyncHandler = async () => {
     console.log("namesOfUsersByTheirFavFruit: " + namesOfUsersByTheirFavFruit)
 
     // how many users have 'ad' as the second tag in their tags?
-    const usersWithTheAdTag = db.users.aggregate([
+    const usersWithTheAdTag = await db.users.aggregate([
         {
             $match: {
                 "tags.1": "ad" // tags.1 defines the index of the array since the question asked for that
@@ -247,7 +247,7 @@ const asyncHandler = async () => {
     console.log("usersWithTheAdTag: " + usersWithTheAdTag)
 
     // Find users who have both 'enim' and 'id' tags
-    const usersWithEnimAndIdTags = db.users.aggregate([
+    const usersWithEnimAndIdTags = await db.users.aggregate([
         {
             $match: {
                 tags: {
@@ -260,7 +260,7 @@ const asyncHandler = async () => {
     console.log("usersWithEnimAndIdTags: " + usersWithEnimAndIdTags)
 
     // List all companies located in USA with their corresponding user count
-    const companiesWithCorrespondingUserCount = db.users.aggregate([
+    const companiesWithCorrespondingUserCount = await db.users.aggregate([
         {
             $match: {
                 "company.location.country": "USA"
