@@ -67,6 +67,132 @@ const asyncHandler = async () => {
 
     console.log("numberOfMaleAndFemales: " + numberOfMalesAndFemales)
 
+    // which country has the highest number of registered users?
+    const highestRegisteredUsersByCountry = db.authors.aggregate([
+        {
+            $group: {
+                _id: "$company.location.country",
+                count: {
+                    $sum: 1
+                }
+            }
+        },
+        {
+            $sort: {
+                count: -1
+            }
+        },
+        {
+            $limit: 1
+        }
+    ])
+
+    console.log("highestRegisteredUsersByCountry: " + highestRegisteredUsersByCountry)
+
+    const eyeColors = db.authors.aggregate([
+        {
+            $group: {
+                _id: "$eyeColor"
+            }
+        }
+    ])
+
+    console.log("eyeColors: " + eyeColors)
+
+    // Find the average number of tags by user
+    const averageNumberOfTagsByUser_method1 = db.authors.aggregate([
+        {
+            $unwind: {
+                path: "$tags",
+            }
+        },
+        {
+            $group: {
+                _id: "$_id",
+                numberOfTags: {
+                    $sum: 1
+                }
+            }
+        },
+        {
+            $group: {
+                _id: null,
+                averageNumberOfTags: {
+                    $avg: "$numberOfTags"
+                }
+            }
+        }
+    ])
+
+    // another way
+    const averageNumberOfTagsByUser_method2 = db.authors.aggregate([
+        {
+            $addFields: {
+                numberOfTags: {
+                    $size: {
+                        $ifNull: ["$tags", []]
+                    }
+                }
+            }
+        },
+        {
+            $group: {
+                _id: null,
+                averageNumberOfTags: {
+                    $avg: "$numberOfTags"
+                }
+            }
+        }
+    ])
+
+    console.log("averageNumberOfTagsByUser_method1: " + averageNumberOfTagsByUser_method1)
+    console.log("averageNumberOfTagsByUser_method2: " + averageNumberOfTagsByUser_method2)
+
+    const usersWithEnimTag = db.authors.aggregate([
+        {
+            $match: {
+                tags: "enim"
+            }
+        },
+        {
+            $count: 'usersWithEnimTag'
+        }
+    ])
+
+    console.log("usersWithEnimTag: " + usersWithEnimTag)
+
+    // what are the names and age of users who are inactive and have 'velit' as a tag.
+    const nameAndAgeOfUsers = db.authors.aggregate([
+        {
+            $match: {
+                isActive: false,
+                tags: "velit"
+            }
+        },
+        {
+            $project: {
+                name: 1,
+                age: 1
+            }
+        }
+    ])
+
+    console.log("nameAndAgeOfUsers: " + nameAndAgeOfUsers)
+
+    // How many users have a phone number starting with "+1 (940)"?
+    const userWithSpecialNumber = db.authors.aggregate([
+        {
+          $match: {
+            "company.phone": /^\+1 \(940\)/
+          }
+        },
+        {
+          $count: 'userWithSpecialNumber'
+        }
+      ])
+
+      console.log("userWithSpecialNumber: " + userWithSpecialNumber)
+
 }
 
 asyncHandler()
