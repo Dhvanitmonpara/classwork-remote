@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30DaysOfJavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #main-heading, #secondary-heading {
+            margin-bottom: 20px;
+            height: 400px;
+            width: 100vw;
+        }
+        #paragraph-1, #paragraph-2 {
+            margin-bottom: 20px;
+            height: 100px;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-heading" class="main"></div>
+    <div id="secondary-heading" class="secondary"></div>
+    <p id="paragraph-1" class="para"></p>
+    <p id="paragraph-2" class="para"></p>
+
+    <ul id="listing" class="list"></ul>
+
+    <button id="button">click me</button>
+
+    <!-- script -->
+    <script>
+        // add a click event listener to a button that changes the text content of a paragraph
+        document.getElementById("button").addEventListener("click", function() {
+            document.getElementById("paragraph-1").textContent = "This is the updated paragraph.";
+        });
+
+        // add a double-click event listener to an image that toggle its visibility
+        document.getElementById("image").addEventListener("dblclick", function() {
+            this.style.display = this.style.display === "none"? "block" : "none";
+        });
+
+        // add a mouseover event listener to an elem that changes its bg color
+        document.getElementById("main-heading").addEventListener("mouseover", function() {
+            this.style.backgroundColor = "red";
+        });
+
+        // add a mouseover event listener to an elem that rests its bg color
+        document.getElementById("main-heading").addEventListener("mouseout", function() {
+            this.style.backgroundColor = "";
+        });
+
+        // add a keydown event listener to a text input that logs the key passed
+        document.getElementById("text-input").addEventListener("keydown", function(event) {
+            console.log(event.key);
+        });
+
+        // add a keyup event listener to an input field that that displays the current value in a paragraph
+        document.getElementById("text-input").addEventListener("keyup", function() {
+            document.getElementById("paragraph-2").textContent = this.value;
+        });
+
+        // add a submit event event listener to a form that prevents the default submission and logs the form data to the console
+        document.getElementById("my-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            console.log(this.elements);
+        });
+
+        // add a change event listener to a select dropdown that updates a paragraph with the selected option
+        document.getElementById("select-dropdown").addEventListener("change", function() {
+            document.getElementById("paragraph-1").textContent = this.value;
+        });
+
+        // add a click event listener to a list that logs the text content of the clicked list item using event delegation
+        document.getElementById("listing").addEventListener("click", function(event) {
+            if (event.target.tagName === "LI") {
+                console.log(event.target.textContent);
+            }
+        });
+
+        // add a event listener to a parent elem that listens for events from dynamically added child elements
+        const parentElement = document.getElementById("parent");
+        parentElement.addEventListener("click", function(event) {
+            if (event.target.tagName === "LI") {
+                console.log(event.target.textContent);
+            }
+        });
+
+    </script>
+</body>
+</html>
