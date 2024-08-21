@@ -1,0 +1,14 @@
+{
+	"Print to console": {
+		"scope": "java",
+		"prefix": "java",
+		"body": [
+			"public class className$1 {\n",
+			"    public static void main(String[] args) {",
+			"    ",
+			"    }\n",
+			"}\n"
+		],
+		"description": "Java boilerplate"
+	}
+}

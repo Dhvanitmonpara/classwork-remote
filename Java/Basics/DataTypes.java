@@ -14,7 +14,7 @@ public class DataTypes {
         long v5 = 8847389;
 
         // with decimal
-        float v6 = 3.12f;
+        float v6 = 3.12f; // by default, it's double
         double v7 = 3.234554;
 
         // character
