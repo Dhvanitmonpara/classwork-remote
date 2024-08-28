@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class StringObject {
     public static void main(String[] args) {
 
@@ -38,5 +40,48 @@ public class StringObject {
         String name = "John Doe";
         int age = 30;
         System.out.printf("My name is %s, and I am %d years old.%n", name, age);
+
+
+        // heap vs stack memory usage
+        // actual string vs reference
+        String str1 = new String("Hello");
+        // String str2 = new String("Hello"); // it'll throw an exception
+
+        if (str1 == str2) {
+            // it (==) checks reference whereas stringName.equals checks value
+            // equalsIgnoreCase ignores cases anuj == Anuj
+            System.out.println("Both strings are same");
+        }
+        // visit strings in java by anuj bhaiya for better explanation
+        // concept of heap and stack memory in java
+        // String interning for optimization in java
+        String str5 = "Hello";
+        String str6 = "Hello";
+        if (str5 == str6) {
+            System.out.println("Both strings are same");
+        }
+        // interning happens when you create a string using double quotes
+        // and the JVM checks if the same string already exists in the string pool
+        // if yes, it returns the reference else creates a new string in the pool
+        // string pool is a part of JVM memory
+        // it's an optimization technique to reduce memory usage
+       
+        combineName();
+
+    }
+
+    public static void combineName(){
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your first name: ");
+       String firstName = sc.nextLine();
+
+        System.out.print("Enter your last name: ");
+        String lastName = sc.nextLine();
+
+        System.out.println("Your name is " + firstName + " " + lastName);
+
+        sc.close();
     }
 }
