@@ -8,13 +8,16 @@ dec = 1  # Default decrement for score subtraction
 
 def show_help():
     print("\nCommands:")
-    print("player    Add or Remove a player")
-    print("inc       Define increment (How many points to add)")
-    print("dec       Define decrement (How many points to subtract)")
-    print("add       Add points to a player's score")
-    print("sub       Subtract points from a player's score")
-    print("score     Show all scores along with players")
-    print("exit      Exit the program\n")
+    print("player [name]   Add or Remove a player")
+    print("player          Add or Remove a player")
+    print("inc [val]       Define increment with value (How many points to add)")
+    print("dec [val]       Define decrement with value (How many points to subtract)")
+    print("inc             Define increment (How many points to add)")
+    print("dec             Define decrement (How many points to subtract)")
+    print("add             Add points to a player's score")
+    print("sub             Subtract points from a player's score")
+    print("score           Show all scores along with players")
+    print("exit            Exit the program\n")
 
 def toggle_player(name):
     if name in players:
@@ -48,10 +51,21 @@ while cmd != "exit":
     elif cmd == "player":
         name = input("Enter player name: ").strip()
         toggle_player(name)
+        
+    elif cmd.split(" ")[0].strip() == "player":
+        name = cmd.split(" ")[1].strip()
+        toggle_player(name)
     
     elif cmd == "inc":
         try:
             inc = int(input("Enter increment value: "))
+            print(f"Increment value set to {inc}.")
+        except ValueError:
+            print("Please enter a valid number.")
+    
+    elif cmd.split(" ")[0].strip() == "inc":
+        try:
+            inc = int(cmd.split(" ")[1])
             print(f"Increment value set to {inc}.")
         except ValueError:
             print("Please enter a valid number.")
@@ -62,13 +76,28 @@ while cmd != "exit":
             print(f"Decrement value set to {dec}.")
         except ValueError:
             print("Please enter a valid number.")
+            
+    elif cmd.split(" ")[0].strip() == "dec":
+        try:
+            dec = int(cmd.split(" ")[1])
+            print(f"Decrement value set to {dec}.")
+        except ValueError:
+            print("Please enter a valid number.")
     
     elif cmd == "add":
         name = input("Enter player name to add points: ").strip()
         update_score(name, inc)
+        
+    elif cmd.split(" ")[0].strip() == "add":
+        name = cmd.split(" ")[1].strip()
+        update_score(name, inc)
     
     elif cmd == "sub":
         name = input("Enter player name to subtract points: ").strip()
+        update_score(name, -dec)
+        
+    elif cmd.split(" ")[0].strip() == "sub":
+        name = cmd.split(" ")[1].strip()
         update_score(name, -dec)
     
     elif cmd == "score":
