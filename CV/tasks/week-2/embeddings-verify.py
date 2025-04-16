@@ -14,7 +14,6 @@ cap = cv2.VideoCapture(1)
 path = 'db/faces'
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
-
 def fix_brightness_if_needed(img, dark_threshold=70, bright_threshold=200):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     mean_brightness = gray.mean()
@@ -122,9 +121,9 @@ try:
       gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
       faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
       
-      if is_face_too_small(face):
-        print(f"[ # ] Upscaling face {len(faces)} due to small size")
-        face = upscale_face(face, scale=2)
+    #   if is_face_too_small(face):
+    #     print(f"[ # ] Upscaling face {len(faces)} due to small size")
+    #     face = upscale_face(face, scale=2)
             
       # for (x, y, w, h) in faces:
       #   face_roi = frame[y:y+h, x:x+w]
