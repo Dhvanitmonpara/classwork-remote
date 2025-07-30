@@ -1,0 +1,50 @@
+body, *{
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: limegreen;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#hackingGround{
+    background: #000;
+    opacity: 80%;
+    height: 100vh;
+    width: 100vw;
+    border: 2px double limegreen;
+    font-size: larger;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+p{
+    display: inline-block;
+}
+
+#userNameIn {
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    /* border: 1px solid limegreen; */
+}
+
+#bgImg {
+    min-height: 100vh;
+    min-width: 300px;
+    display: flex;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+    background-image: url('img/44f0b734a5.jpg');
+}
+
+#hackingGround div {
+    display: inline-block;
+}
+
+.bineryObj {
+    height: 100vh;
+    width: 100vw;
+    word-wrap: break-word;
+}

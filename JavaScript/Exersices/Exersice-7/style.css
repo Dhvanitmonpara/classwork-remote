@@ -1,0 +1,148 @@
+*,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+#pass-div {
+  height: 400px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+#form {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: larger;
+}
+
+.form-sec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 80%;
+  margin: 0px 10%;
+  height: 25%;
+  font-size: large;
+}
+
+.input-label {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+.input-btn {
+  height: 20px;
+  width: 20px;
+}
+
+#length-pass {
+  width: 80px;
+  border: 0;
+  padding: 0px 5px;
+  border: 2px solid rgb(147, 147, 147);
+  outline: 0;
+}
+
+#pass-gen-con {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pass-gen-subcon {
+  background-color: #dcdcdc;
+
+  display: flex;
+  justify-content: center;
+  border-radius: 50px;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+}
+
+#pass-gen {
+  display: flex;
+  width: 70%;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+#copy-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+#gen-btn-con {
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100px;
+}
+
+#gen-btn {
+  background-color: black;
+  margin-top: 10px;
+  border-radius: 50px;
+  height: 50px;
+  width: 80%;
+  transition: all 0.3s ease-in-out;
+  color: white;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#gen-btn:hover {
+  transform: scale(1.05);
+}
+
+#gen-btn:active {
+  transform: scale(1);
+}
+
+#copy-msg {
+  margin-top: 5px;
+  height: 25px;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#alert-msg {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+  font-size: large;
+  height: 10px;
+}

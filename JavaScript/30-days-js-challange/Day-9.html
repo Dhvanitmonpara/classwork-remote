@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30DaysOfJavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #main-heading, #secondary-heading {
+            margin-bottom: 20px;
+            height: 400px;
+            width: 100vw;
+        }
+        #paragraph-1, #paragraph-2 {
+            margin-bottom: 20px;
+            height: 100px;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-heading" class="main"></div>
+    <div id="secondary-heading" class="secondary"></div>
+    <p id="paragraph-1" class="para"></p>
+    <p id="paragraph-2" class="para"></p>
+
+    <ul id="listing" class="list"></ul>
+
+    <button id="button">click me</button>
+
+    <!-- script -->
+    <script>
+        // select the html tag by id and change its text
+        document.getElementById("main-heading").textContent = "Day 1: Introduction to JavaScript";
+
+        // select a html tag by class and change bg color
+        document.querySelector(".main").style.backgroundColor = "lightblue";
+
+        // create a new div element with some new content and append it to the body
+        const newDiv = document.createElement("div");
+        newDiv.textContent = "This is a new div element.";
+        document.body.appendChild(newDiv); 
+
+        // create an li elem and append it to existing ui elem
+        const listItem = document.createElement("li");
+        listItem.textContent = "List item 1";
+        document.getElementById("listing").appendChild(listItem);
+
+        // select a html elem and remove it from the dom
+        const removeElement = document.getElementById("main-heading");
+        document.body.removeChild(removeElement);
+
+        // remove a last child of specific html elem
+        const lastChild = document.querySelector(".list").lastChild;
+        document.querySelector(".list").removeChild(lastChild);
+
+        // add a click event listener to the button that changes the text content of a paragraph
+        document.getElementById("button").addEventListener("click", function() {
+            document.getElementById("paragraph-1").textContent = "This is the updated paragraph.";
+        });
+
+        // add a mouseover event listener to that elem that changes the border color
+        document.getElementById("main-heading").addEventListener("mouseover", function() {
+            document.getElementById("main-heading").style.borderColor = "red";
+        });
+    </script>
+</body>
+</html>

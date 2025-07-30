@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alarm clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="custom-msg-con" class="custom-msg-active">
+      <div id="custom-msg">
+        <p id="custom-msg-text">
+          Input alarm values by clicking on set alarm button.
+        </p>
+        <button id="custom-msg-check">OK</button>
+      </div>
+    </div>
+    <div id="set-alarm-con">
+      <form id="set-alarm-form">
+          <div id="set-alarm-subcon">
+            <h1 id="set-alarm-heading">Set alarm</h1>
+          <div id="set-alarm-subcon-main">
+            <input
+              type="number"
+              name="minuteInput"
+              min="0"
+              max="59"
+              placeholder="minutes"
+              class="set-alarm-style"
+              id="get-min"
+            />
+            <input
+              type="number"
+              name="secondInput"
+              min="0"
+              max="59"
+              placeholder="seconds"
+              class="set-alarm-style"
+              id="get-sec"
+            />
+          </div>
+        </div>
+        <div id="set-alarm-btn-con">
+          <button type="button" id="set-alarm-btn">Set Alarm</button>
+        </div>
+      </form>
+    </div>
+    <div id="container">
+      <div id="sub-con">
+        <p id="min" class="count-down-text">00</p>
+        <p id="colon">:</p>
+        <p id="sec" class="count-down-text">00</p>
+      </div>
+      <div id="set-con">
+        <button id="set-alarm">set alarm</button>
+        <button id="start-alarm">start</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

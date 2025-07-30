@@ -1,0 +1,122 @@
+*,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+  width: 100vw;
+  height: 10vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0px;
+}
+
+#news-logo {
+  width: 10vw;
+  height: 10vh;
+  margin-left: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#navbar > ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+  width: 30vw;
+  font-size: medium;
+  color: rgb(177, 177, 177);
+  transition: all 0.4s ease-in-out;
+}
+
+#navbar > ul :hover {
+  color: rgb(243, 243, 243) !important;
+}
+
+#search-btn {
+  width: 200px;
+  height: 35px;
+  /* background-color: #fff; */
+  /* color: black; */
+  border: 0px;
+  outline: 0px;
+  padding: 0px 8px;
+}
+
+#input-con {
+  margin-right: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 251px;
+  height: 35px;
+}
+
+#search-btn-icon {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: purple;
+}
+
+#search-btn-icon:hover {
+  background-color: rgb(75, 0, 75) !important;
+}
+
+#news-con {
+  display: grid;
+  width: 1630px;
+  grid-template-columns: 400px 400px 400px 400px;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin: 20px auto;
+  margin-top: 13vh;
+}
+
+.news-card {
+  width: 340px;
+  height: 400px;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0px 30px;
+}
+
+.channel-name {
+  font-size: x-large;
+  font-weight: 550;
+}
+
+.channel-url {
+  width: 360px;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 400;
+  font-size: larger;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.channel-url :hover {
+  background-color: #202020;
+}

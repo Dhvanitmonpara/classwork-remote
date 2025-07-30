@@ -1,0 +1,2 @@
+npx react-native init [app-name]
+npx @react-native-community/cli init newapp

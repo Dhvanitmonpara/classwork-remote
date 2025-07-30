@@ -1,0 +1,14 @@
+CMD
+
+npx create-next-app
+npm run dev
+
+
+
+Snippet
+rafce
+
+
+React syntax
+dont forget "use client"
+<></> these are fragments used as wrappers

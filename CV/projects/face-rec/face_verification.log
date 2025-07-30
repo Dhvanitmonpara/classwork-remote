@@ -1,0 +1,5 @@
+2025-04-10 10:25:44,433 - INFO - FaceVerifier initialized
+2025-04-10 10:26:20,600 - INFO - FaceVerifier initialized
+2025-04-10 10:26:42,120 - INFO - FaceVerifier initialized
+2025-04-10 10:36:22,421 - CRITICAL - Critical error: Embedding file not found at data/optimized_embedding.npy
+2025-04-10 10:36:34,740 - INFO - FaceVerifier initialized

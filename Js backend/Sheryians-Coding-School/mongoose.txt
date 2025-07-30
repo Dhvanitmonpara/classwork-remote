@@ -1,0 +1,20 @@
+1. download and import mongoose
+2. connect to mongoDB
+3. create schema
+4. export model
+5. import model in anoher file
+6. use mongoDB queries
+
+Note: If it gives an error then use async-await fuction to resolve it
+
+
+
+Methods:
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://127.0.0.1:27017/newDatabaseName')
+const userSchema = mongoose.Schema({
+	username: String,
+	city: String,
+	age: Number
+})
+module.exports = mongoose.model('newCollectionName', userSchema)
